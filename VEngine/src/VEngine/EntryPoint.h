@@ -6,7 +6,10 @@ extern VEngine::Application* VEngine::CreateApplication();
 
 void main(int argc, char** argv)
 {
-	printf("VEngine^_^\n");
+	VEngine::Log::Init();
+	VE_CORE_WARN("Initialized Log!");
+	VE_INFO("Hello!");
+	
 	auto app = VEngine::CreateApplication();
 	app->Run();
 	delete app;
