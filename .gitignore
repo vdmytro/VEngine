@@ -7,3 +7,5 @@
 .vs/
 bin/
 bin-int/
+
+!vendor/bin/
