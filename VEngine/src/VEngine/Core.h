@@ -11,3 +11,5 @@
 	#error VEngine only supports Windows!
 
 #endif // VE_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x)
