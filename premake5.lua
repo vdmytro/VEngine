@@ -10,6 +10,12 @@ workspace "VEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "VEngine/vendor/GLFW/include"
+
+include "VEngine/vendor/GLFW"
+
 project "VEngine"
 	location "VEngine"
 	kind "SharedLib"
@@ -17,6 +23,9 @@ project "VEngine"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "vepch.h"
+	pchsource "VEngine/src/vepch.cpp"
 
 	files
 	{
@@ -27,7 +36,14 @@ project "VEngine"
 	includedirs
 	{
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -47,15 +63,22 @@ project "VEngine"
 		}
 
 		filter "configurations:Debug"
-			defines "VE_DEBUG"
+			defines
+			{
+				"VE_DEBUG",
+				"VE_ENABLE_ASSERTS"
+			} 
+			buildoptions "/MDd"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "VE_RELEASE"
+			buildoptions "/MD"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "VE_DIST"
+			buildoptions "/MD"
 			optimize "On"
 
 project "Sandbox"
@@ -95,12 +118,16 @@ project "Sandbox"
 
 		filter "configurations:Debug"
 			defines "VE_DEBUG"
+			buildoptions "/MTd"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "VE_RELEASE"
+			buildoptions "/MT"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "VE_DIST"
+			buildoptions "/MT"
 			optimize "On"
+	

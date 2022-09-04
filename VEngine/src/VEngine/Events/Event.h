@@ -1,8 +1,8 @@
 #pragma once
 
 #include "VEngine/Core.h"
-#include <string>
-#include <functional>
+
+#include "vepch.h"
 
 namespace VEngine
 {
