@@ -1,7 +1,6 @@
 #include "vepch.h"
 #include "Application.h"
 
-#include "VEngine/Events/ApplicationEvent.h"
 #include "VEngine/Log.h"
 
 #include <GLFW/glfw3.h>
@@ -32,7 +31,15 @@ namespace VEngine {
 
 	void Application::OnEvent(Event& e)
 	{
-		VE_CORE_INFO("{0}",e);
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClosed));
+		VE_CORE_TRACE("{0}",e);
+	}
+
+	bool Application::OnWindowClosed(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return true;
 	}
 
 }
