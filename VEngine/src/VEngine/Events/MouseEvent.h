@@ -1,7 +1,5 @@
 #pragma once
 
-#include "vepch.h"
-
 #include "Event.h"
 
 
@@ -56,7 +54,7 @@ namespace VEngine
 	class VE_API MouseButtonEvent : public Event
 	{
 	public:
-		inline int GetMouseButton() const {}
+		inline int GetMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:

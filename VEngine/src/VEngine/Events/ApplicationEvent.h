@@ -1,7 +1,5 @@
 #pragma once
 
-#include "vepch.h"
-
 #include "Event.h"
 
 
@@ -31,6 +29,7 @@ namespace VEngine
 
 	class VE_API WindowCloseEvent : public Event
 	{
+	public:
 		WindowCloseEvent() {}
 
 		EVENT_CLASS_TYPE(WindowClose)

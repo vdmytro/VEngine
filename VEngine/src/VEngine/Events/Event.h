@@ -2,7 +2,7 @@
 
 #include "VEngine/Core.h"
 
-#include "vepch.h"
+#include <functional>
 
 namespace VEngine
 {

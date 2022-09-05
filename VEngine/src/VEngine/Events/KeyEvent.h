@@ -1,6 +1,5 @@
 #pragma once
 
-#include "vepch.h"
 
 #include "Event.h"
 
