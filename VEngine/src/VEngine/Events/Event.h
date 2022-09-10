@@ -40,6 +40,7 @@ namespace VEngine
 		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
 		inline bool IsInCategory(EventCategory category) { return GetCategoryFlags() & category; }
+		bool isHandled() const { return m_Handler; };
 	protected:
 		bool m_Handler = false;
 	};

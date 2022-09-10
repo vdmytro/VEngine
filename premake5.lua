@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "VEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "VEngine/vendor/Glad/include"
 
 include "VEngine/vendor/GLFW"
+include "VEngine/vendor/Glad"
 
 project "VEngine"
 	location "VEngine"
@@ -37,12 +39,14 @@ project "VEngine"
 	{
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -54,7 +58,8 @@ project "VEngine"
 		defines
 		{
 			"VE_PLATFORM_WINDOWS",
-			"VE_BUILD_DLL"
+			"VE_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

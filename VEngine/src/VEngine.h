@@ -1,8 +1,7 @@
 #pragma once
 
-
-#include <stdio.h>
 #include "VEngine/Application.h"
+#include "VEngine/Layer.h"
 
 //---------Logger-------------------
 #include "VEngine/Log.h"
