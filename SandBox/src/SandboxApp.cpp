@@ -8,7 +8,7 @@ public:
 	{}
 	void OnUpdate() override
 	{
-		VE_INFO("ExampleLayer::Update");
+		//VE_INFO("ExampleLayer::Update");
 	}
 	void OnEvent(VEngine::Event& event) override
 	{
@@ -25,6 +25,7 @@ public:
 	Sandbox() 
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new VEngine::ImGuiLayer());
 	}
 	~Sandbox() {
 
