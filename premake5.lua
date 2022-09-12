@@ -1,6 +1,6 @@
 workspace "VEngine"
 	architecture "x64"
-
+	startproject "Sandbox"
 	configurations
 	{
 		"Debug",
@@ -20,10 +20,12 @@ include "VEngine/vendor/GLFW"
 include "VEngine/vendor/Glad"
 include "VEngine/vendor/imgui"
 
+
 project "VEngine"
 	location "VEngine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -56,7 +58,6 @@ project "VEngine"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -74,26 +75,26 @@ project "VEngine"
 		filter "configurations:Debug"
 			defines
 			{
-				"VE_DEBUG",
-				"VE_ENABLE_ASSERTS"
+				"VE_DEBUG"
 			} 
-			buildoptions "/MDd"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "VE_RELEASE"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "VE_DIST"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -117,9 +118,8 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
-
+		staticruntime "on"
 		defines
 		{
 			"VE_PLATFORM_WINDOWS"
@@ -127,16 +127,16 @@ project "Sandbox"
 
 		filter "configurations:Debug"
 			defines "VE_DEBUG"
-			buildoptions "/MTd"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "VE_RELEASE"
-			buildoptions "/MT"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "VE_DIST"
-			buildoptions "/MT"
+			runtime "Release"
 			optimize "On"
 	
