@@ -13,7 +13,7 @@ public:
 	void OnEvent(VEngine::Event& event) override
 	{
 		//VE_TRACE("{0}",event); // heap errors
-		VE_TRACE("ExampleLayer::Event");
+		//VE_TRACE("ExampleLayer::Event");
 	}
 	
 };
