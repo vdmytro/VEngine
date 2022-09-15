@@ -26,7 +26,7 @@ namespace VEngine {
 	void Application::Run()
 	{
 		while (m_Running) {
-			glClearColor(1, 1, 0, 1); 
+			glClearColor(0, 1, 1, 1); 
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			for (Layer* layer : m_LayerStack)
@@ -36,7 +36,6 @@ namespace VEngine {
 
 			m_Window->OnUpdate();
 		}
-	
 	}
 
 	void Application::OnEvent(Event& e)
