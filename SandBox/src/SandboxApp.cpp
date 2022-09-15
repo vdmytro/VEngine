@@ -8,12 +8,19 @@ public:
 	{}
 	void OnUpdate() override
 	{
-		//VE_INFO("ExampleLayer::Update");
+
+		if (VEngine::Input::IsKeyPressed(VE_KEY_TAB))
+			VE_TRACE("Tab is pressed!");
+
 	}
 	void OnEvent(VEngine::Event& event) override
 	{
 		//VE_TRACE("{0}",event); // heap errors
-		//VE_TRACE("ExampleLayer::Event");
+		if (event.GetEventType() == VEngine::EventType::KeyPressed)
+		{
+			VEngine::KeyPressedEvent& e = (VEngine::KeyPressedEvent&)event;
+			VE_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 	
 };

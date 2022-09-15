@@ -36,7 +36,7 @@ namespace VEngine {
 				layer->OnUpdate();
 			}
 			auto [x, y] = Input::GetMousePosition();
-			VE_CORE_TRACE("{0}, {1}", x,y);
+			//VE_CORE_TRACE("{0}, {1}", x,y);
 			m_Window->OnUpdate();
 		}
 	}

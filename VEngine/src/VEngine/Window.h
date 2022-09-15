@@ -14,8 +14,8 @@ namespace VEngine
 		unsigned int Height;
 
 		WindowProps(const std::string& title = "VEngine^_^",
-					unsigned int width = 1280,
-					unsigned int height = 720)
+					unsigned int width = 800,
+					unsigned int height = 500)
 			:	Title(title), Width(width), Height(height)
 		{
 		}
